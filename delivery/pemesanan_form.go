@@ -29,6 +29,7 @@ func Pemesanan(useCasePesanan usecase.PesananMasukUseCase, useCaseMeja usecase.L
 	fmt.Scanln(&kode_makanan)
 	fmt.Println("Masukan Nama Pelanggan")
 	fmt.Scanln(&nama_pelanggan)
+
 	fmt.Printf("Nomer Meja : %s Kode Makanan : %s akan disimpan (Y/N) ?", nomer_meja, kode_makanan)
 	fmt.Scanln(&saveProductConfirmation)
 

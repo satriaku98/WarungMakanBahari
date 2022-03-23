@@ -14,7 +14,7 @@ func main() {
 		fmt.Scanln(&selectedMenu)
 		switch selectedMenu {
 		case "1":
-			delivery.MenuMakanan(appConfig.UseCaseManager.ListMakananUseCase())
+			delivery.MenuMakanan(appConfig.UseCaseManager.ListMakananUseCase(), appConfig.UseCaseManager.GetSelectedMakanan())
 			break
 		case "2":
 			delivery.Pemesanan(appConfig.UseCaseManager.PesananMasukUseCase(), appConfig.UseCaseManager.ListMejaUseCase(), appConfig.UseCaseManager.UpdateStatusMeja())

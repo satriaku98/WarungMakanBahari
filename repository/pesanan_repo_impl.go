@@ -31,7 +31,7 @@ func (p *pesananRepoImpl) Delete(newDelete model.Pesanan) {
 func (p *pesananRepoImpl) GetAll() []model.Pesanan {
 	//return *p.productDb
 	var dataProduct []model.Pesanan
-	sql := `select * from pesanan ORDER BY nomer_meja`
+	sql := `select * from pesanan  ORDER BY nomer_meja`
 	p.pesananDb.Select(&dataProduct, sql) // Get dengan jumlah data yang banyak
 	//fmt.Println(dataProduct)
 	return dataProduct

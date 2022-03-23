@@ -9,6 +9,7 @@ type UseCaseManager interface {
 	UpdateStatusMeja() usecase.UpdateStatusMeja
 	ListPesananUseCase() usecase.ListPesananUseCase
 	HapusPesananUseCase() usecase.HapusPesananUseCase
+	GetSelectedMakanan() usecase.SearchMakananUseCase
 }
 type useCaseManager struct {
 	repo RepoManager
@@ -31,6 +32,9 @@ func (u *useCaseManager) ListPesananUseCase() usecase.ListPesananUseCase {
 }
 func (u *useCaseManager) HapusPesananUseCase() usecase.HapusPesananUseCase {
 	return usecase.NewHapusPesananUseCase(u.repo.PesananRepo())
+}
+func (u *useCaseManager) GetSelectedMakanan() usecase.SearchMakananUseCase {
+	return usecase.NewSearchMakananUseCase(u.repo.MakananRepo())
 }
 func NewUseCaseManager(manager RepoManager) UseCaseManager {
 	return &useCaseManager{
