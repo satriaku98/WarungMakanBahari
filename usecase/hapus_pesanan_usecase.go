@@ -13,7 +13,7 @@ type hapusPesananUseCase struct {
 }
 
 func (a *hapusPesananUseCase) Delete(nomerMeja, kodeMakanan, namaPelanggan string) model.Pesanan {
-	newDelete := model.NewPesanan(nomerMeja, kodeMakanan, namaPelanggan)
+	newDelete := model.NewPesanan(nomerMeja, kodeMakanan, namaPelanggan, 0)
 	a.repo.Delete(newDelete)
 	return newDelete
 }

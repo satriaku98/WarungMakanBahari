@@ -14,7 +14,7 @@ type pesanananMasukUseCase struct {
 }
 
 func (a *pesanananMasukUseCase) Register(nomerMeja, kodeMakanan, namaPelanggan string) model.Pesanan {
-	newProduct := model.NewPesanan(nomerMeja, kodeMakanan, namaPelanggan)
+	newProduct := model.NewPesanan(nomerMeja, kodeMakanan, namaPelanggan, 0)
 	a.repo.Insert(newProduct)
 	return newProduct
 }

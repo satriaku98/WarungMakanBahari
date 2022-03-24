@@ -20,7 +20,7 @@ func main() {
 			delivery.Pemesanan(appConfig.UseCaseManager.PesananMasukUseCase(), appConfig.UseCaseManager.ListMejaUseCase(), appConfig.UseCaseManager.UpdateStatusMeja())
 			break
 		case "3":
-			delivery.Pembayaran(appConfig.UseCaseManager.ListPesananUseCase(), appConfig.UseCaseManager.HapusPesananUseCase())
+			delivery.Pembayaran(appConfig.UseCaseManager.ListPesananUseCase(), appConfig.UseCaseManager.HapusPesananUseCase(), appConfig.UseCaseManager.TotalHargaPesananUseCase())
 			break
 		case "4":
 			delivery.ExitApp()

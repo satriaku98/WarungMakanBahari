@@ -10,6 +10,7 @@ type UseCaseManager interface {
 	ListPesananUseCase() usecase.ListPesananUseCase
 	HapusPesananUseCase() usecase.HapusPesananUseCase
 	GetSelectedMakanan() usecase.SearchMakananUseCase
+	TotalHargaPesananUseCase() usecase.TotalHargaPesananUseCase
 }
 type useCaseManager struct {
 	repo RepoManager
@@ -35,6 +36,9 @@ func (u *useCaseManager) HapusPesananUseCase() usecase.HapusPesananUseCase {
 }
 func (u *useCaseManager) GetSelectedMakanan() usecase.SearchMakananUseCase {
 	return usecase.NewSearchMakananUseCase(u.repo.MakananRepo())
+}
+func (u *useCaseManager) TotalHargaPesananUseCase() usecase.TotalHargaPesananUseCase {
+	return usecase.NewTotalHargaPesananUseCase(u.repo.PesananRepo())
 }
 func NewUseCaseManager(manager RepoManager) UseCaseManager {
 	return &useCaseManager{
