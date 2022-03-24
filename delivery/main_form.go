@@ -15,7 +15,7 @@ func MainMenu() {
 	fmt.Println("|3. |Halaman Pembayaran")
 	fmt.Println("|4. |Keluar")
 	fmt.Println(strings.Repeat("=", 70))
-	fmt.Println("Pilih menu (1-3): ")
+	fmt.Println("Pilih menu (1-4): ")
 }
 func ExitToMain() {
 	var mainMenuConfirmation string
