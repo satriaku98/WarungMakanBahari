@@ -1,40 +1,41 @@
 package delivery
 
 import (
+	"WarungMakan/delivery/util"
 	"WarungMakan/usecase"
 	"fmt"
 	"strings"
 )
 
 func Pembayaran(useCasePesanan usecase.ListPesananUseCase, useCaseHapus usecase.HapusPesananUseCase, useCaseTotal usecase.TotalHargaPesananUseCase) {
-	fmt.Println(strings.Repeat("=", 70))
-	fmt.Println("\t\t\tWarung Makan Bahari")
-	fmt.Println(strings.Repeat("=", 70))
-	fmt.Printf("%-10s%-20s%-20s%-20s%-20s\n", "Nomer", "NOMER MEJA", "KODE MAKANAN", "NAMA", "HARGA")
-	//appConfig := config.NewConfig()
+	util.GarisAtas()
+	fmt.Println("\t\t\t\tWarung Makan Bahari")
+	util.GarisAtas()
+	fmt.Println("\t\t\t\tFORM PEMBAYARAN")
+	util.GarisAtas()
+	fmt.Printf(util.ListTableFormat, "Nomer", "NOMER MEJA", "KODE MAKANAN", "NAMA", "HARGA")
+	fmt.Println(strings.Repeat("-", 90))
 	for idx, meja := range useCasePesanan.GetAll() {
 		fmt.Printf("%-10d%-20s%-20s%-20s%-20d\n", idx+1, meja.NomerMeja, meja.KodeMakanan, meja.NamaPelanggan, meja.Harga)
 	}
 
-	fmt.Println(strings.Repeat("=", 70))
+	util.GarisAtas()
 	var nomer_meja string
+	var uang int
+	var kembalian int
 	var saveProductConfirmation string
 	fmt.Println("Masukan Nomer Meja")
 	fmt.Scanln(&nomer_meja)
 	total := useCaseTotal.Total(nomer_meja)
 	fmt.Printf("Total Tagihan Nomer Meja %s Adalah = Rp. %d,--\n", nomer_meja, total)
+	fmt.Print("Uang yang diberikan = ")
+	fmt.Scanln(&uang)
+	kembalian = uang - total
+	fmt.Printf("Total Kembalian = %d\n", kembalian)
 	fmt.Printf("Nomer Meja : %s telah LUNAS (Y/N) ?", nomer_meja)
 	fmt.Scanln(&saveProductConfirmation)
 	if saveProductConfirmation == "Y" || saveProductConfirmation == "y" {
-		//useCasePesanan.Register(nomer_meja, kode_makanan)
-		//fmt.Println("Apakah Ada Tambahan (Y/N) ?")
-		//fmt.Scanln(&repeat)
-		//if repeat == "Y" || repeat == "y" {
-		//	Pemesanan(appConfig.UseCaseManager.PesananMasukUseCase(), appConfig.UseCaseManager.ListMejaUseCase(), appConfig.UseCaseManager.UpdateStatusMeja())
-		//}
-		//useCaseUpdateMeja.Update(nomer_meja, "")
 		useCaseHapus.Delete(nomer_meja, "", "")
-		//fmt.Println("Oke")
 	}
 	ExitToMain()
 }

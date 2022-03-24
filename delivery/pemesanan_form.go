@@ -2,21 +2,21 @@ package delivery
 
 import (
 	"WarungMakan/config"
+	"WarungMakan/delivery/util"
 	"WarungMakan/usecase"
 	"fmt"
-	"strings"
 )
 
 func Pemesanan(useCasePesanan usecase.PesananMasukUseCase, useCaseMeja usecase.ListMejaUseCase, useCaseUpdateMeja usecase.UpdateStatusMeja) {
-	fmt.Println(strings.Repeat("=", 70))
-	fmt.Println("\t\t\tWarung Makan Bahari")
-	fmt.Println(strings.Repeat("=", 70))
+	util.GarisAtas()
+	fmt.Println("\t\t\t\tWarung Makan Bahari")
+	util.GarisAtas()
 	appConfig := config.NewConfig()
 
 	for idx, meja := range useCaseMeja.GetAll() {
 		fmt.Printf("%-3d%-20s%s\n", idx+1, meja.Nomer, meja.Status)
 	}
-	fmt.Println(strings.Repeat("=", 70))
+	util.GarisAtas()
 
 	var nomer_meja string
 	var kode_makanan string

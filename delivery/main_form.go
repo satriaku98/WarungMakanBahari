@@ -1,20 +1,20 @@
 package delivery
 
 import (
+	"WarungMakan/delivery/util"
 	"fmt"
 	"os"
-	"strings"
 )
 
 func MainMenu() {
-	fmt.Println(strings.Repeat("=", 70))
+	util.GarisAtas()
 	fmt.Println("\t\t\tWarung Makan Bahari")
-	fmt.Println(strings.Repeat("=", 70))
+	util.GarisAtas()
 	fmt.Println("|1. |Daftar Menu")
 	fmt.Println("|2. |Halaman Pemesanan")
 	fmt.Println("|3. |Halaman Pembayaran")
 	fmt.Println("|4. |Keluar")
-	fmt.Println(strings.Repeat("=", 70))
+	util.GarisAtas()
 	fmt.Println("Pilih menu (1-4): ")
 }
 func ExitToMain() {
